@@ -84,18 +84,60 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+In preparation for the examination candidates should attempt the following practical tasks by **writing and testing a program or programs**.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Friends of Seaview Pier is an organisation devoted to the restoration and upkeep of a pier in the town.  A pier is a wooden structure that provides a walkway over the sea.  The pier requires regular maintenance and the friends of the pier need to raise money for this purpose.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Members of Friends of Seaview Pier each pay $75 per year, as a contribution to the pier’s running costs.  This entitles them to free admission to the pier throughout the year. They can also volunteer to help run the pier, by working at the pier entrance gate, working in the gift shop, or painting and decorating.
 
-Use the `BLANK_README.md` to get started.
+To provide additional income, the pier’s wooden planks can be sponsored. A brass plaque, which contains a short message of the sponsor’s choice, is fitted to a plank on the pier, for a donation of $200.
+
+Write and test a program or programs for the Friends of Seaview Pier:
+
+<ul>
+  <li>Your program or programs must include appropriate prompts for the entry of data. Data must be validated on entry.</li>
+  <li>All outputs, including error messages, need to be set out clearly and understandably.</li>
+  <li>All variables, constants and other identifiers must have meaningful names.</li>
+</ul>
+
+You will need to complete these **three** tasks. Each task must be fully tested.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+### Task 1 - becoming a member of Friends of Seaview Pier
+
+Set up a system to enable people to become members of Friends of Seaview Pier and for each new member enter:
+
+* their first name and last name
+* whether **or not** they wish to work as a volunteer
+  * if they choose to volunteer, identify the area from:
+    * the pier entrance gate
+    * the gift shop
+    * painting and decorating
+  * the date of joining
+  * whether or not they have paid the $75 fee.
+ 
+All of this information needs to be stored using suitable data structures.
+
+
+
+### Task 2 – using the membership data
+
+Extend the program in **Task 1** so that a list of the first and last names of members can be output in any of the following categories:
+
+* Members who have chosen to work as volunteers.
+* Volunteers who would like to work at the pier entrance gate.
+* Volunteers who would like to work in the gift shop.
+* Volunteers who would like to help with painting and decorating tasks.
+* Members whose membership has expired (they have not re-joined this year).
+* Members who have not yet paid their $75 fee.
+
+
+
+### Task 3 – sponsoring a wooden plank
+Add an additional option to the program in **Task 1** to enable the pier’s wooden planks to be sponsored.  Separate data structures should be used to store the names of the individuals and the short messages they would like to have written on their brass plaque.  An output would display everything that was input for the sponsor to confirm. If errors are found, the program should allow data to be re-entered.  Once complete, the data is stored and the sponsor is charged $200.
 
 
 
@@ -103,96 +145,7 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+* [Python](https://python.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -201,7 +154,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GPL License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -210,9 +163,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@earlution](https://twitter.com/earlution) - rmears@warminsterschool.org.uk
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/earlution/cie-0984-jun22-s21](https://github.com/earlution/cie-0984-jun22-s21)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
