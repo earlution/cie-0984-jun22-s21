@@ -28,7 +28,9 @@ def capture_new_member_details(volunteer_locations):
     joining_fee = input("Have you paid the joining fee (y/n)? ").lower()
     if joining_fee in ["y", "yes", "yeah", "yep", "indeed"]:
         joining_fee_paid = True
-    member_details.append(joining_fee_paid)   
+    member_details.append(joining_fee_paid)
+    plank_sponsor = False
+    member_details.append(plank_sponsor)
     return member_details
 
 
@@ -49,21 +51,19 @@ def capture_joining_date():
     return joining_date
 
 
-def save_members(members):
+def save_data(members, filename):
     """Serialise param members to text file.
 
     :param members:
     2d list; 2nd dimension represents individual member_details lists.
     """
-    
-    filename = "fsp_members.txt"
+
     output_file = open(filename, "wb")
     pickle.dump(members, output_file)
     output_file.close()
 
 
-def load_members():
-    filename = "fsp_members.txt"
+def load_data(filename):
     input_file = open(filename, "rb")
     members = pickle.load(input_file)
     input_file.close()
@@ -93,7 +93,7 @@ def output_paint_decor_volunteers(members):
             print(member[0], member[1])
 
 def sponsor_plank():
-    confirm = True
+    loop = True
     while confirm:
         sponsor_name = capture_sponsor()
         plaque_names = capture_sponsor_names()
@@ -103,6 +103,10 @@ def sponsor_plank():
         sponsor_info['plaque names'] = plaque_names
         sponsor_info['message'] = message
         confirm = confirm_info(sponsor_info)
+        if confirm:
+            sponsor_info['fee paid'] = True
+            print('Thank you for confirming your info.  Your £200 donation has been collected and your record updated.')
+            break
     return sponsor_info
 
 
@@ -133,10 +137,10 @@ def confirm_info(sponsor_info):
     while True:
         print('This is the information you have provided:')
         print('Name(s):')
-        for name in sponsor_info['names']:
-            print(f' {name}')
+        for name in sponsor_info.get('plaque names'):
+            print(name)
         print('Message:')
-        print(f' {message}')
+        print(sponsor_info.get('message'))
         print()
         print('Please check for errors in the provided information.')
         print('In the case of an error, you will re-enter your information.')
@@ -154,12 +158,13 @@ def main():
                     '3': 'Load members records from file',
                     '4': 'Output the first and last names of members in any of a number of categories',
                     '5': 'Output member by list index',
-                    '6': 'Sponsor pier plank',
+                    '6': 'Sponsor pier plank options',
                     'X': 'Exit/Quit'}
     volunteer_locations = {1: 'pier entrance gate',
                            2: 'gift shop',
                            3: 'painting and decorating'}
     members = []
+    sponsors = list()
     intro()
     answer = True
     while answer:
@@ -173,10 +178,10 @@ def main():
             members.append(member_details)
             print()
         elif answer == "2":
-            save_members(members)
+            save_data(members, "fsp_members.txt")
             print()
         elif answer == "3":
-            members = load_members()
+            members = load_data("fsp_members.txt")
             print()
         elif answer == "4":
             answer3 = True
@@ -217,8 +222,33 @@ def main():
         elif answer == "5":
             raise NotImplementedError
         elif answer == "6":
-            sponsor_info = sponsor_plank()
-            print()
+            answer6 = True
+            while answer6:
+                print("Sponsor pier plank options:")
+                print("1. Sponsor a pier plank.")
+                print("2. Write sponsor records to file.")
+                print("3. Read sponsor records from file.")
+                print("4. View sponsorship details by sponsor")
+                print("X. Return to main menu")
+                answer = input("What would you like to do? ")
+                print()
+                if answer == "1":
+                    sponsor_info = sponsor_plank()
+                    sponsors.append(sponsor_info)
+                    print()
+                elif answer == "2":
+                    save_data(sponsors, "fsp_sponsors.txt")
+                    print()
+                elif answer == '3':
+                    sponsor_info = load_data("fsp_sponsors.txt")
+                    print()
+                elif answer == '4':
+                    raise NotImplementedError
+                elif answer.lower() == "x":
+                    print("\nGoodbye")
+                    answer6 = None
+                else:
+                    print("\n Not Valid Choice Try again")
         elif answer.lower() == "x":
             print("\nGoodbye") 
             answer = None
