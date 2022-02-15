@@ -93,22 +93,33 @@ def output_paint_decor_volunteers(members):
             print(member[0], member[1])
 
 def sponsor_plank():
-    names = capture_sponsor_names()
-    sponsor_info[names] = None
-    message = capture_sponsor_message()
-    sponsor_info[names] = message
-    confirm_info(sponsor_info)
+    confirm = True
+    while confirm:
+        sponsor_name = capture_sponsor()
+        plaque_names = capture_sponsor_names()
+        message = capture_sponsor_message()
+        sponsor_info = dict()
+        sponsor_info['sponsor'] = sponsor_name
+        sponsor_info['plaque names'] = plaque_names
+        sponsor_info['message'] = message
+        confirm = confirm_info(sponsor_info)
     return sponsor_info
 
+
+def capture_sponsor():
+    sponsor_name = input('Enter the name of the person sponsoring the plaque (does not have to appear on plaque): ')
+    return sponsor_name
+
+
 def capture_sponsor_names():
-    names = list()
+    plaque_names = list()
     while True:
-        name = input('Enter the name of a person to appear on the plaque: ')
-        names.append(name)
+        plaque_name = input('Enter the name of a person to appear on the plaque: ')
+        plaque_names.append(plaque_name)
         another = input('Do you want to add another name (Y/N)? ')
-        if another.lower() in ['n', 'no', 'nay', 'nope']:
+        if another.lower() in ['n', 'no', 'nay', 'nope', 'negative']:
             break
-    return names
+    return plaque_names
 
 
 def capture_sponsor_message():
@@ -117,18 +128,24 @@ def capture_sponsor_message():
     return message
 
 
-def confirm_info():
+def confirm_info(sponsor_info):
+    confirm = False
     while True:
         print('This is the information you have provided:')
         print('Name(s):')
-        for name in names:
+        for name in sponsor_info['names']:
             print(f' {name}')
         print('Message:')
         print(f' {message}')
         print()
         print('Please check for errors in the provided information.')
         print('In the case of an error, you will re-enter your information.')
-        input = ('Please confirm (Y/N): ')
+        confirm = input('Please confirm the information is as you intend (Y/N): ')
+        positive_confirmation = ['yes', 'y', 'yeah', 'yep', 'positive']
+        if confirm.lower() in positive_confirmation:
+            confirm = True
+            break
+    return confirm
 
 
 def main():
@@ -142,7 +159,6 @@ def main():
     volunteer_locations = {1: 'pier entrance gate',
                            2: 'gift shop',
                            3: 'painting and decorating'}
-    plank_sponsors = dict()
     members = []
     intro()
     answer = True
@@ -199,10 +215,9 @@ def main():
                 else:
                    print("\n Not Valid Choice Try again")
         elif answer == "5":
-            print('Not yet implemented')
-            print()
+            raise NotImplementedError
         elif answer == "6":
-            sponsor_plank(plank_sponsors)
+            sponsor_info = sponsor_plank()
             print()
         elif answer.lower() == "x":
             print("\nGoodbye") 
@@ -211,4 +226,4 @@ def main():
            print("\n Not Valid Choice Try again")
 
 
-# main()    
+main()
